@@ -1,0 +1,33 @@
+{
+    "name": "UnitychanControls",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "9b3b6e78-7157-4847-85ad-b66d9b6ca801",
+            "actions": [
+                {
+                    "name": "MoveLeft",
+                    "type": "Value",
+                    "id": "6332590f-dac4-44af-aa5b-558e1545282e",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d278354b-be61-46f2-82e7-5f2b993a70a2",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
