@@ -7,9 +7,17 @@
             "actions": [
                 {
                     "name": "MoveLeft",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "6332590f-dac4-44af-aa5b-558e1545282e",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "MoveRight",
+                    "type": "Button",
+                    "id": "6bd8bc61-cff5-4cb9-a4b0-2064d6aa9d3c",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -23,6 +31,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "MoveLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c95266a4-c616-48bc-ab0f-f4a8ff3c97d1",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

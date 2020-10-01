@@ -20,9 +20,17 @@ public class @UnitychanControls : IInputActionCollection, IDisposable
             ""actions"": [
                 {
                     ""name"": ""MoveLeft"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""6332590f-dac4-44af-aa5b-558e1545282e"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MoveRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""6bd8bc61-cff5-4cb9-a4b0-2064d6aa9d3c"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -38,6 +46,17 @@ public class @UnitychanControls : IInputActionCollection, IDisposable
                     ""action"": ""MoveLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c95266a4-c616-48bc-ab0f-f4a8ff3c97d1"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -47,6 +66,7 @@ public class @UnitychanControls : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_MoveLeft = m_Player.FindAction("MoveLeft", throwIfNotFound: true);
+        m_Player_MoveRight = m_Player.FindAction("MoveRight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -97,11 +117,13 @@ public class @UnitychanControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_MoveLeft;
+    private readonly InputAction m_Player_MoveRight;
     public struct PlayerActions
     {
         private @UnitychanControls m_Wrapper;
         public PlayerActions(@UnitychanControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @MoveLeft => m_Wrapper.m_Player_MoveLeft;
+        public InputAction @MoveRight => m_Wrapper.m_Player_MoveRight;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -114,6 +136,9 @@ public class @UnitychanControls : IInputActionCollection, IDisposable
                 @MoveLeft.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveLeft;
                 @MoveLeft.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveLeft;
                 @MoveLeft.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveLeft;
+                @MoveRight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveRight;
+                @MoveRight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveRight;
+                @MoveRight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMoveRight;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -121,6 +146,9 @@ public class @UnitychanControls : IInputActionCollection, IDisposable
                 @MoveLeft.started += instance.OnMoveLeft;
                 @MoveLeft.performed += instance.OnMoveLeft;
                 @MoveLeft.canceled += instance.OnMoveLeft;
+                @MoveRight.started += instance.OnMoveRight;
+                @MoveRight.performed += instance.OnMoveRight;
+                @MoveRight.canceled += instance.OnMoveRight;
             }
         }
     }
@@ -128,5 +156,6 @@ public class @UnitychanControls : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnMoveLeft(InputAction.CallbackContext context);
+        void OnMoveRight(InputAction.CallbackContext context);
     }
 }
