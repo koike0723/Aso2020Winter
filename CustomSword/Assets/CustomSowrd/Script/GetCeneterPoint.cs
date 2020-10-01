@@ -14,6 +14,7 @@ public class GetCeneterPoint : MonoBehaviour
     private float radius;
     private float margin = 1.0f;        //半径を少し余分にとるための値
     private float distance;
+    [SerializeField]
     private float cameraHeight = 0f;  //カメラが地面にめり込まないようにカメラを浮かせる高さ
 
     void Start()
