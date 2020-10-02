@@ -18,6 +18,7 @@ public class MoveUnitychan : MonoBehaviour
 
     Rigidbody _rb;
     Animator _animator;
+    RaycastHit hit_info;
 
     //地面との接触判定
     private bool is_onground = true;
@@ -42,6 +43,8 @@ public class MoveUnitychan : MonoBehaviour
 
     void Update()
     {
+        Physics.Raycast(transform.position, -transform.up, out RaycastHit info,10.0f );
+        hit_info = info;
     }
 
     private void OnDisable()
@@ -67,10 +70,38 @@ public class MoveUnitychan : MonoBehaviour
         transform.position += transform.forward * move_speed;
     }
 
+    public void MoveFalling(bool inputleft, bool inputright)
+    {
+        if(inputleft)
+        {
+            transform.rotation = LEFT;
+            transform.position += transform.forward * move_speed;
+        }
+        if(inputright)
+        {
+            transform.rotation = RIGHT;
+            transform.position += transform.forward * move_speed;
+        }
+    }
+
     public void Jump()
     {
         _rb.AddForce(transform.up * jump_force);
         is_onground = false;
     }
+
+    public bool CharacterOnGround()
+    {
+        if(!is_onground && hit_info.collider != null)
+        {
+            if (hit_info.collider.gameObject.CompareTag("Ground") && hit_info.distance < 0.1f)
+            {
+                is_onground = true;
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
 
