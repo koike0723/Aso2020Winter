@@ -213,7 +213,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 45, y: 25, z: 0}
 --- !u!1 &185861843
 GameObject:
@@ -227,7 +227,6 @@ GameObject:
   - component: {fileID: 185861846}
   - component: {fileID: 185861845}
   - component: {fileID: 185861844}
-  - component: {fileID: 185861848}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Ground
@@ -309,24 +308,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &185861848
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 185861843}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &191482175
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +361,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &305878022
 GameObject:
@@ -410,7 +393,7 @@ Transform:
   m_Children:
   - {fileID: 948064693}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &305878024
 MonoBehaviour:
@@ -481,8 +464,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b24644568fbf7c4418e73a6f7d2640c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move_speed: 0.05
-  jump_force: 400
+  move_speed: 0.1
+  jump_force: 500
+  ray_distance: 20
+  ray_y_offset: 0.5
+  distance_text: {fileID: 550803317}
 --- !u!111 &309934180
 Animation:
   m_ObjectHideFlags: 0
@@ -641,9 +627,12 @@ MonoBehaviour:
         - HutongGames.PlayMaker.Actions.GetKey
         - HutongGames.PlayMaker.Actions.GetKey
         - HutongGames.PlayMaker.Actions.GetKey
+        - HutongGames.PlayMaker.Actions.GetButton
+        - HutongGames.PlayMaker.Actions.GetAxis
         - HutongGames.PlayMaker.Actions.BoolTest
         - HutongGames.PlayMaker.Actions.BoolTest
         - HutongGames.PlayMaker.Actions.BoolTest
+        - HutongGames.PlayMaker.Actions.FloatCompare
         customNames:
         - Set Animator is_stand true
         - Set Animator is_running false
@@ -651,13 +640,16 @@ MonoBehaviour:
         - Get Key Left
         - Get Key Right
         - Get Key Space
+        - 
+        - 
         - InputLeft?
         - InputRight?
         - InputJamp?
-        actionEnabled: 010101010101010101
-        actionIsOpen: 000000000000000000
-        actionStartIndex: 00000000050000000a0000000f0000001200000015000000180000001c00000020000000
-        actionHashCodes: 5f9135045f9135045f913504642ea003642ea003642ea003a4c8bf00a4c8bf00a4c8bf00
+        - 
+        actionEnabled: 010101000000010100000101
+        actionIsOpen: 000000000000000000000000
+        actionStartIndex: 00000000050000000a0000000f0000001200000015000000180000001b0000001f00000023000000270000002b000000
+        actionHashCodes: 5f9135045f9135045f913504642ea003642ea003642ea0035ef271033fb24c03a4c8bf00a4c8bf00a4c8bf001bcdca04
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -710,11 +702,53 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           value: is_jump
+        - useVariable: 1
+          name: button_x
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: Jump
+        - useVariable: 1
+          name: Horizontal
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: Horizontal
         fsmObjectParams: []
         fsmVarParams: []
         fsmArrayParams: []
         fsmEnumParams: []
-        fsmFloatParams: []
+        fsmFloatParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 1
+        - useVariable: 1
+          name: axis_val
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
+        - useVariable: 1
+          name: axis_val
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
+        - useVariable: 1
+          name: axis_tolerance
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0.5
         fsmIntParams: []
         fsmBoolParams:
         - useVariable: 0
@@ -736,37 +770,43 @@ MonoBehaviour:
           networkSync: 0
           value: 0
         - useVariable: 1
-          name: InputLeft
+          name: key_left
           tooltip: 
           showInInspector: 0
           networkSync: 0
           value: 0
         - useVariable: 1
-          name: InputRight
+          name: key_right
           tooltip: 
           showInInspector: 0
           networkSync: 0
           value: 0
         - useVariable: 1
-          name: InputJump
+          name: key_space
           tooltip: 
           showInInspector: 0
           networkSync: 0
           value: 0
         - useVariable: 1
-          name: InputLeft
+          name: key_space
           tooltip: 
           showInInspector: 0
           networkSync: 0
           value: 0
         - useVariable: 1
-          name: InputRight
+          name: key_left
           tooltip: 
           showInInspector: 0
           networkSync: 0
           value: 0
         - useVariable: 1
-          name: InputJump
+          name: key_right
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
+        - useVariable: 1
+          name: key_space
           tooltip: 
           showInInspector: 0
           networkSync: 0
@@ -783,12 +823,15 @@ MonoBehaviour:
         - 
         - INPUTJUMP
         - 
-        byteData: 000000000000000000000000000000140100000113010000012000000001010101
+        - 
+        - INPUTLEFT
+        - INPUTRIGHT
+        byteData: 000000000000000000000000000000140100000113010000012000000001010101010101
         arrayParamSizes: 
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 140000001200000011000000010000000700000014000000120000001100000001000000070000001400000012000000110000000100000007000000070000001100000001000000070000001100000001000000070000001100000001000000110000001700000017000000010000001100000017000000170000000100000011000000170000001700000001000000
+        paramDataType: 140000001200000011000000010000000700000014000000120000001100000001000000070000001400000012000000110000000100000007000000070000001100000001000000070000001100000001000000070000001100000001000000120000001100000001000000120000000f0000000f000000010000001100000017000000170000000100000011000000170000001700000001000000110000001700000017000000010000000f0000000f0000000f00000017000000170000001700000001000000
         paramName:
         - gameObject
         - parameter
@@ -814,9 +857,12 @@ MonoBehaviour:
         - key
         - storeResult
         - everyFrame
-        - boolVariable
-        - isTrue
-        - isFalse
+        - buttonName
+        - storeResult
+        - everyFrame
+        - axisName
+        - multiplier
+        - store
         - everyFrame
         - boolVariable
         - isTrue
@@ -826,8 +872,19 @@ MonoBehaviour:
         - isTrue
         - isFalse
         - everyFrame
-        paramDataPos: 000000000000000000000000000000000100000001000000010000000100000005000000060000000200000002000000020000000a0000000b0000000f000000030000001300000014000000040000001800000019000000050000001d0000000600000000000000010000001e0000000700000002000000030000001f00000008000000040000000500000020000000
-        paramByteDataSize: 000000000000000000000000010000000400000000000000000000000000000001000000040000000000000000000000000000000100000004000000040000000000000001000000040000000000000001000000040000000000000001000000000000000000000000000000010000000000000000000000000000000100000000000000000000000000000001000000
+        - boolVariable
+        - isTrue
+        - isFalse
+        - everyFrame
+        - float1
+        - float2
+        - tolerance
+        - equal
+        - lessThan
+        - greaterThan
+        - everyFrame
+        paramDataPos: 000000000000000000000000000000000100000001000000010000000100000005000000060000000200000002000000020000000a0000000b0000000f000000030000001300000014000000040000001800000019000000050000001d00000003000000060000001e0000000400000000000000010000001f00000007000000000000000100000020000000080000000200000003000000210000000900000004000000050000002200000002000000030000000400000006000000070000000800000023000000
+        paramByteDataSize: 0000000000000000000000000100000004000000000000000000000000000000010000000400000000000000000000000000000001000000040000000400000000000000010000000400000000000000010000000400000000000000010000000000000000000000010000000000000000000000000000000100000000000000000000000000000001000000000000000000000000000000010000000000000000000000000000000100000000000000000000000000000000000000000000000000000001000000
     - name: JumpReserve
       description: 
       colorIndex: 0
@@ -922,11 +979,11 @@ MonoBehaviour:
         fsmEnumParams: []
         fsmFloatParams:
         - useVariable: 1
-          name: playbacktime
+          name: JumpReserve_playbacktime
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: 0.333
+          value: 0.1
         fsmIntParams: []
         fsmBoolParams:
         - useVariable: 0
@@ -989,7 +1046,7 @@ MonoBehaviour:
         x: 658.8828
         y: 336.77344
         width: 100
-        height: 48
+        height: 64
       isBreakpoint: 0
       isSequence: 0
       hideUnused: 0
@@ -1010,6 +1067,14 @@ MonoBehaviour:
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
+      - fsmEvent:
+          name: INPUTRIGHT
+          isSystemEvent: 0
+          isGlobal: 0
+        toState: RunRight
+        linkStyle: 0
+        linkConstraint: 0
+        colorIndex: 0
       actionData:
         actionNames:
         - HutongGames.PlayMaker.Actions.SetAnimatorBool
@@ -1017,20 +1082,26 @@ MonoBehaviour:
         - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.GetKey
         - HutongGames.PlayMaker.Actions.GetKey
+        - HutongGames.PlayMaker.Actions.GetButton
+        - HutongGames.PlayMaker.Actions.GetAxis
         - HutongGames.PlayMaker.Actions.BoolTest
         - HutongGames.PlayMaker.Actions.BoolTest
+        - HutongGames.PlayMaker.Actions.FloatCompare
         customNames:
         - Set Animator is_stand false
         - Set Animator is_running true
         - 
         - Get Key Left
         - Get Key Space
+        - 
+        - 
         - NotInput?
         - InputJamp?
-        actionEnabled: 01010101010101
-        actionIsOpen: 00000000000000
-        actionStartIndex: 00000000050000000a0000001000000013000000160000001a000000
-        actionHashCodes: 5f9135045f913504ca51e900642ea003642ea003a4c8bf00a4c8bf00
+        - 
+        actionEnabled: 01010100000101000101
+        actionIsOpen: 00000000000000000000
+        actionStartIndex: 00000000050000000a000000100000001300000016000000190000001d0000002100000025000000
+        actionHashCodes: 5f9135045f913504ca51e900642ea003642ea0035ef271033fb24c03a4c8bf00a4c8bf001bcdca04
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -1075,6 +1146,18 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           value: MoveLeft
+        - useVariable: 1
+          name: button_x
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: Jump
+        - useVariable: 1
+          name: Horizontal
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: Horizontal
         fsmObjectParams:
         - useVariable: 1
           name: MoveUnitychan
@@ -1110,7 +1193,37 @@ MonoBehaviour:
             objectReferences: []
         fsmArrayParams: []
         fsmEnumParams: []
-        fsmFloatParams: []
+        fsmFloatParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 1
+        - useVariable: 1
+          name: axis_val
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
+        - useVariable: 1
+          name: axis_val
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
+        - useVariable: 1
+          name: axis_tolerance
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0.5
         fsmIntParams: []
         fsmBoolParams:
         - useVariable: 0
@@ -1126,25 +1239,31 @@ MonoBehaviour:
           networkSync: 0
           value: 1
         - useVariable: 1
-          name: InputLeft
+          name: key_left
           tooltip: 
           showInInspector: 0
           networkSync: 0
           value: 0
         - useVariable: 1
-          name: InputJump
+          name: key_space
           tooltip: 
           showInInspector: 0
           networkSync: 0
           value: 0
         - useVariable: 1
-          name: InputLeft
+          name: key_space
           tooltip: 
           showInInspector: 0
           networkSync: 0
           value: 0
         - useVariable: 1
-          name: InputJump
+          name: key_left
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
+        - useVariable: 1
+          name: key_space
           tooltip: 
           showInInspector: 0
           networkSync: 0
@@ -1159,13 +1278,16 @@ MonoBehaviour:
         - NOTINPUT
         - INPUTJUMP
         - 
-        byteData: 000000000000000000000100140100000120000000010101
+        - NOTINPUT
+        - 
+        - INPUTRIGHT
+        byteData: 000000000000000000000100140100000120000000010101010101
         arrayParamSizes: 00000000
         arrayParamTypes:
         - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 1400000012000000110000000100000007000000140000001200000011000000010000000700000018000000120000000c0000002700000001000000010000000700000011000000010000000700000011000000010000001100000017000000170000000100000011000000170000001700000001000000
+        paramDataType: 1400000012000000110000000100000007000000140000001200000011000000010000000700000018000000120000000c000000270000000100000001000000070000001100000001000000070000001100000001000000120000001100000001000000120000000f0000000f0000000100000011000000170000001700000001000000110000001700000017000000010000000f0000000f0000000f00000017000000170000001700000001000000
         paramName:
         - gameObject
         - parameter
@@ -1189,25 +1311,39 @@ MonoBehaviour:
         - key
         - storeResult
         - everyFrame
-        - boolVariable
-        - isTrue
-        - isFalse
+        - buttonName
+        - storeResult
+        - everyFrame
+        - axisName
+        - multiplier
+        - store
         - everyFrame
         - boolVariable
         - isTrue
         - isFalse
         - everyFrame
-        paramDataPos: 00000000000000000000000000000000010000000100000001000000010000000500000006000000000000000200000000000000000000000a0000000b0000000c00000002000000100000001100000003000000150000000400000000000000010000001600000005000000020000000300000017000000
-        paramByteDataSize: 000000000000000000000000010000000400000000000000000000000000000001000000040000000000000000000000000000000000000001000000010000000400000000000000010000000400000000000000010000000000000000000000000000000100000000000000000000000000000001000000
+        - boolVariable
+        - isTrue
+        - isFalse
+        - everyFrame
+        - float1
+        - float2
+        - tolerance
+        - equal
+        - lessThan
+        - greaterThan
+        - everyFrame
+        paramDataPos: 00000000000000000000000000000000010000000100000001000000010000000500000006000000000000000200000000000000000000000a0000000b0000000c00000002000000100000001100000003000000150000000300000004000000160000000400000000000000010000001700000005000000000000000100000018000000060000000200000003000000190000000200000003000000040000000400000005000000060000001a000000
+        paramByteDataSize: 0000000000000000000000000100000004000000000000000000000000000000010000000400000000000000000000000000000000000000010000000100000004000000000000000100000004000000000000000100000000000000000000000100000000000000000000000000000001000000000000000000000000000000010000000000000000000000000000000100000000000000000000000000000000000000000000000000000001000000
     - name: RunRight
       description: 
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 657.9844
-        y: 435.20312
+        x: 661.1953
+        y: 453.17188
         width: 100
-        height: 48
+        height: 64
       isBreakpoint: 0
       isSequence: 0
       hideUnused: 0
@@ -1228,6 +1364,14 @@ MonoBehaviour:
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
+      - fsmEvent:
+          name: INPUTLEFT
+          isSystemEvent: 0
+          isGlobal: 0
+        toState: RunLeft
+        linkStyle: 0
+        linkConstraint: 0
+        colorIndex: 0
       actionData:
         actionNames:
         - HutongGames.PlayMaker.Actions.SetAnimatorBool
@@ -1235,20 +1379,26 @@ MonoBehaviour:
         - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.GetKey
         - HutongGames.PlayMaker.Actions.GetKey
+        - HutongGames.PlayMaker.Actions.GetButton
+        - HutongGames.PlayMaker.Actions.GetAxis
         - HutongGames.PlayMaker.Actions.BoolTest
         - HutongGames.PlayMaker.Actions.BoolTest
+        - HutongGames.PlayMaker.Actions.FloatCompare
         customNames:
         - Set Animator is_stand false
         - Set Animator is_running true
         - 
         - Get Key Right
         - Get Key Space
+        - 
+        - 
         - NotInput?
         - InputJamp?
-        actionEnabled: 01010101010101
-        actionIsOpen: 00000000000000
-        actionStartIndex: 00000000050000000a0000001000000013000000160000001a000000
-        actionHashCodes: 5f9135045f913504ca51e900642ea003642ea003a4c8bf00a4c8bf00
+        - 
+        actionEnabled: 01010100000101000101
+        actionIsOpen: 00000000000000000000
+        actionStartIndex: 00000000050000000a000000100000001300000016000000190000001d0000002100000025000000
+        actionHashCodes: 5f9135045f913504ca51e900642ea003642ea0035ef271033fb24c03a4c8bf00a4c8bf001bcdca04
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -1293,6 +1443,18 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           value: MoveRight
+        - useVariable: 1
+          name: button_x
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: Jump
+        - useVariable: 1
+          name: Horizontal
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: Horizontal
         fsmObjectParams:
         - useVariable: 1
           name: MoveUnitychan
@@ -1328,7 +1490,37 @@ MonoBehaviour:
             objectReferences: []
         fsmArrayParams: []
         fsmEnumParams: []
-        fsmFloatParams: []
+        fsmFloatParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 1
+        - useVariable: 1
+          name: axis_val
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
+        - useVariable: 1
+          name: axis_val
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
+        - useVariable: 1
+          name: axis_tolerance
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0.5
         fsmIntParams: []
         fsmBoolParams:
         - useVariable: 0
@@ -1344,25 +1536,31 @@ MonoBehaviour:
           networkSync: 0
           value: 1
         - useVariable: 1
-          name: InputRight
+          name: key_right
           tooltip: 
           showInInspector: 0
           networkSync: 0
           value: 0
         - useVariable: 1
-          name: InputJump
+          name: key_space
           tooltip: 
           showInInspector: 0
           networkSync: 0
           value: 0
         - useVariable: 1
-          name: InputRight
+          name: key_space
           tooltip: 
           showInInspector: 0
           networkSync: 0
           value: 0
         - useVariable: 1
-          name: InputJump
+          name: key_right
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
+        - useVariable: 1
+          name: key_space
           tooltip: 
           showInInspector: 0
           networkSync: 0
@@ -1377,13 +1575,16 @@ MonoBehaviour:
         - NOTINPUT
         - INPUTJUMP
         - 
-        byteData: 000000000000000000000100130100000120000000010101
+        - NOTINPUT
+        - INPUTLEFT
+        - 
+        byteData: 000000000000000000000100130100000120000000010101010101
         arrayParamSizes: 00000000
         arrayParamTypes:
         - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 1400000012000000110000000100000007000000140000001200000011000000010000000700000018000000120000000c0000002700000001000000010000000700000011000000010000000700000011000000010000001100000017000000170000000100000011000000170000001700000001000000
+        paramDataType: 1400000012000000110000000100000007000000140000001200000011000000010000000700000018000000120000000c000000270000000100000001000000070000001100000001000000070000001100000001000000120000001100000001000000120000000f0000000f0000000100000011000000170000001700000001000000110000001700000017000000010000000f0000000f0000000f00000017000000170000001700000001000000
         paramName:
         - gameObject
         - parameter
@@ -1407,16 +1608,30 @@ MonoBehaviour:
         - key
         - storeResult
         - everyFrame
-        - boolVariable
-        - isTrue
-        - isFalse
+        - buttonName
+        - storeResult
+        - everyFrame
+        - axisName
+        - multiplier
+        - store
         - everyFrame
         - boolVariable
         - isTrue
         - isFalse
         - everyFrame
-        paramDataPos: 00000000000000000000000000000000010000000100000001000000010000000500000006000000000000000200000000000000000000000a0000000b0000000c00000002000000100000001100000003000000150000000400000000000000010000001600000005000000020000000300000017000000
-        paramByteDataSize: 000000000000000000000000010000000400000000000000000000000000000001000000040000000000000000000000000000000000000001000000010000000400000000000000010000000400000000000000010000000000000000000000000000000100000000000000000000000000000001000000
+        - boolVariable
+        - isTrue
+        - isFalse
+        - everyFrame
+        - float1
+        - float2
+        - tolerance
+        - equal
+        - lessThan
+        - greaterThan
+        - everyFrame
+        paramDataPos: 00000000000000000000000000000000010000000100000001000000010000000500000006000000000000000200000000000000000000000a0000000b0000000c00000002000000100000001100000003000000150000000300000004000000160000000400000000000000010000001700000005000000000000000100000018000000060000000200000003000000190000000200000003000000040000000400000005000000060000001a000000
+        paramByteDataSize: 0000000000000000000000000100000004000000000000000000000000000000010000000400000000000000000000000000000000000000010000000100000004000000000000000100000004000000000000000100000000000000000000000100000000000000000000000000000001000000000000000000000000000000010000000000000000000000000000000100000000000000000000000000000000000000000000000000000001000000
     - name: Jumping
       description: 
       colorIndex: 0
@@ -1444,6 +1659,8 @@ MonoBehaviour:
         - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.GetKey
         - HutongGames.PlayMaker.Actions.GetKey
+        - HutongGames.PlayMaker.Actions.GetAxis
+        - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.BoolTest
         customNames:
@@ -1453,10 +1670,12 @@ MonoBehaviour:
         - Get Key Right
         - 
         - 
-        actionEnabled: 010101010101
-        actionIsOpen: 000000000000
-        actionStartIndex: 00000000050000000b0000000e0000001100000019000000
-        actionHashCodes: c34b4105ca51e900642ea003642ea003ca51e900a4c8bf00
+        - 
+        - 
+        actionEnabled: 0101000001000101
+        actionIsOpen: 0000000000000000
+        actionStartIndex: 00000000050000000b0000000e00000011000000150000001d00000024000000
+        actionHashCodes: c34b4105ca51e900642ea003642ea0033fb24c03ca51e900ca51e900a4c8bf00
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -1487,6 +1706,18 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           value: CharacterOnGround
+        - useVariable: 1
+          name: Horizontal
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: Horizontal
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: MoveFalling
         - useVariable: 0
           name: 
           tooltip: 
@@ -1494,6 +1725,13 @@ MonoBehaviour:
           networkSync: 0
           value: MoveFalling
         fsmObjectParams:
+        - useVariable: 1
+          name: MoveUnitychan
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          typeName: MoveUnitychan
+          value: {fileID: 0}
         - useVariable: 1
           name: MoveUnitychan
           tooltip: 
@@ -1533,7 +1771,7 @@ MonoBehaviour:
             stringValues: []
             vector4Values: []
             objectReferences: []
-        - variableName: InputLeft
+        - variableName: key_left
           objectType: UnityEngine.Object
           useVariable: 1
           type: 2
@@ -1557,10 +1795,58 @@ MonoBehaviour:
             stringValues: []
             vector4Values: []
             objectReferences: []
-        - variableName: InputRight
+        - variableName: key_right
           objectType: UnityEngine.Object
           useVariable: 1
           type: 2
+          floatValue: 0
+          intValue: 0
+          boolValue: 0
+          stringValue: 
+          vector4Value: {x: 0, y: 0, z: 0, w: 0}
+          objectReference: {fileID: 0}
+          arrayValue:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            type: -1
+            objectTypeName: 
+            floatValues: []
+            intValues: 
+            boolValues: 
+            stringValues: []
+            vector4Values: []
+            objectReferences: []
+        - variableName: 
+          objectType: 
+          useVariable: 0
+          type: -1
+          floatValue: 0
+          intValue: 0
+          boolValue: 0
+          stringValue: 
+          vector4Value: {x: 0, y: 0, z: 0, w: 0}
+          objectReference: {fileID: 0}
+          arrayValue:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            type: -1
+            objectTypeName: 
+            floatValues: []
+            intValues: 
+            boolValues: 
+            stringValues: []
+            vector4Values: []
+            objectReferences: []
+        - variableName: axis_val
+          objectType: UnityEngine.Object
+          useVariable: 1
+          type: 0
           floatValue: 0
           intValue: 0
           boolValue: 0
@@ -1614,6 +1900,18 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           value: 0
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 1
+        - useVariable: 1
+          name: axis_val
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         fsmIntParams:
         - useVariable: 1
           name: BaseLayer
@@ -1623,13 +1921,13 @@ MonoBehaviour:
           value: 0
         fsmBoolParams:
         - useVariable: 1
-          name: InputLeft
+          name: key_left
           tooltip: 
           showInInspector: 0
           networkSync: 0
           value: 0
         - useVariable: 1
-          name: InputRight
+          name: key_right
           tooltip: 
           showInInspector: 0
           networkSync: 0
@@ -1648,14 +1946,15 @@ MonoBehaviour:
         stringParams:
         - FINISHED
         - 
-        byteData: 00010014010000011301000001010001
-        arrayParamSizes: 0000000002000000
+        byteData: 00010014010000011301000001010100010001
+        arrayParamSizes: 000000000200000001000000
         arrayParamTypes:
+        - HutongGames.PlayMaker.FsmVar
         - HutongGames.PlayMaker.FsmVar
         - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 1400000012000000100000000f0000000100000018000000120000000c00000027000000010000000100000007000000110000000100000007000000110000000100000018000000120000000c000000270000002700000027000000010000000100000011000000170000001700000001000000
+        paramDataType: 1400000012000000100000000f0000000100000018000000120000000c000000270000000100000001000000070000001100000001000000070000001100000001000000120000000f0000000f0000000100000018000000120000000c000000270000002700000027000000010000000100000018000000120000000c0000002700000027000000010000000100000011000000170000001700000001000000
         paramName:
         - gameObject
         - stateName
@@ -1674,6 +1973,10 @@ MonoBehaviour:
         - key
         - storeResult
         - everyFrame
+        - axisName
+        - multiplier
+        - store
+        - everyFrame
         - behaviour
         - methodName
         - parameters
@@ -1682,12 +1985,19 @@ MonoBehaviour:
         - storeResult
         - everyFrame
         - manualUI
+        - behaviour
+        - methodName
+        - parameters
+        - 
+        - storeResult
+        - everyFrame
+        - manualUI
         - boolVariable
         - isTrue
         - isFalse
         - everyFrame
-        paramDataPos: 000000000000000000000000000000000000000000000000010000000000000000000000010000000200000003000000000000000700000008000000010000000c0000000100000002000000010000000100000002000000030000000d0000000e0000000200000000000000010000000f000000
-        paramByteDataSize: 0000000000000000000000000000000001000000000000000000000000000000000000000100000001000000040000000000000001000000040000000000000001000000000000000000000000000000000000000000000000000000010000000100000000000000000000000000000001000000
+        paramDataPos: 000000000000000000000000000000000000000000000000010000000000000000000000010000000200000003000000000000000700000008000000010000000c0000000200000001000000020000000d0000000100000003000000010000000100000002000000030000000e0000000f0000000200000004000000020000000400000005000000100000001100000002000000000000000100000012000000
+        paramByteDataSize: 00000000000000000000000000000000010000000000000000000000000000000000000001000000010000000400000000000000010000000400000000000000010000000000000000000000000000000100000000000000000000000000000000000000000000000000000001000000010000000000000000000000000000000000000000000000010000000100000000000000000000000000000001000000
     - name: Landing
       description: 
       colorIndex: 0
@@ -1762,7 +2072,7 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: 0.3
+          value: 0.15
         fsmIntParams:
         - useVariable: 1
           name: BaseLayer
@@ -1834,12 +2144,14 @@ MonoBehaviour:
       actionData:
         actionNames:
         - HutongGames.PlayMaker.Actions.CallMethod
+        - HutongGames.PlayMaker.Actions.Wait
         customNames:
         - 
-        actionEnabled: 01
-        actionIsOpen: 00
-        actionStartIndex: 00000000
-        actionHashCodes: ca51e900
+        - 
+        actionEnabled: 0101
+        actionIsOpen: 0001
+        actionStartIndex: 0000000006000000
+        actionHashCodes: ca51e90048c01101
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams: []
@@ -1891,7 +2203,13 @@ MonoBehaviour:
             objectReferences: []
         fsmArrayParams: []
         fsmEnumParams: []
-        fsmFloatParams: []
+        fsmFloatParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0.1
         fsmIntParams: []
         fsmBoolParams: []
         fsmVector2Params: []
@@ -1899,14 +2217,15 @@ MonoBehaviour:
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
-        stringParams: []
-        byteData: 0000
+        stringParams:
+        - FINISHED
+        byteData: 000000
         arrayParamSizes: 00000000
         arrayParamTypes:
         - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 18000000120000000c000000270000000100000001000000
+        paramDataType: 18000000120000000c0000002700000001000000010000000f0000001700000001000000
         paramName:
         - behaviour
         - methodName
@@ -1914,8 +2233,11 @@ MonoBehaviour:
         - storeResult
         - everyFrame
         - manualUI
-        paramDataPos: 000000000000000000000000000000000000000001000000
-        paramByteDataSize: 000000000000000000000000000000000100000001000000
+        - time
+        - finishEvent
+        - realTime
+        paramDataPos: 000000000000000000000000000000000000000001000000000000000000000002000000
+        paramByteDataSize: 000000000000000000000000000000000100000001000000000000000000000001000000
     events:
     - name: FINISHED
       isSystemEvent: 1
@@ -1939,13 +2261,25 @@ MonoBehaviour:
     variables:
       floatVariables:
       - useVariable: 1
-        name: playbacktime
+        name: Distance
         tooltip: 
         showInInspector: 0
         networkSync: 0
-        value: 0.333
+        value: 0
       - useVariable: 1
-        name: Distance
+        name: JumpReserve_playbacktime
+        tooltip: 
+        showInInspector: 0
+        networkSync: 0
+        value: 0.1
+      - useVariable: 1
+        name: axis_tolerance
+        tooltip: 
+        showInInspector: 0
+        networkSync: 0
+        value: 0.5
+      - useVariable: 1
+        name: axis_val
         tooltip: 
         showInInspector: 0
         networkSync: 0
@@ -1959,19 +2293,7 @@ MonoBehaviour:
         value: 0
       boolVariables:
       - useVariable: 1
-        name: InputJump
-        tooltip: 
-        showInInspector: 0
-        networkSync: 0
-        value: 0
-      - useVariable: 1
-        name: InputLeft
-        tooltip: 
-        showInInspector: 0
-        networkSync: 0
-        value: 0
-      - useVariable: 1
-        name: InputRight
+        name: is_landing
         tooltip: 
         showInInspector: 0
         networkSync: 0
@@ -1983,18 +2305,42 @@ MonoBehaviour:
         networkSync: 0
         value: 0
       - useVariable: 1
-        name: is_landing
+        name: key_left
+        tooltip: 
+        showInInspector: 0
+        networkSync: 0
+        value: 0
+      - useVariable: 1
+        name: key_right
+        tooltip: 
+        showInInspector: 0
+        networkSync: 0
+        value: 0
+      - useVariable: 1
+        name: key_space
         tooltip: 
         showInInspector: 0
         networkSync: 0
         value: 0
       stringVariables:
       - useVariable: 1
+        name: Horizontal
+        tooltip: 
+        showInInspector: 0
+        networkSync: 0
+        value: Horizontal
+      - useVariable: 1
         name: Jumping
         tooltip: 
         showInInspector: 0
         networkSync: 0
         value: Jumping
+      - useVariable: 1
+        name: Landing
+        tooltip: 
+        showInInspector: 0
+        networkSync: 0
+        value: Landing
       - useVariable: 1
         name: is_jump
         tooltip: 
@@ -2014,11 +2360,11 @@ MonoBehaviour:
         networkSync: 0
         value: is_stand
       - useVariable: 1
-        name: Landing
+        name: button_x
         tooltip: 
         showInInspector: 0
         networkSync: 0
-        value: Landing
+        value: Jump
       vector2Variables: []
       vector3Variables:
       - useVariable: 1
@@ -2062,7 +2408,8 @@ MonoBehaviour:
       - Input
       - Jumping
       - StateName
-      variableCategoryIDs: 0000000004000000000000000300000003000000030000000400000004000000050000000100000001000000010000000400000004000000040000000400000002000000
+      - store
+      variableCategoryIDs: 040000000000000000000000060000000000000004000000040000000600000006000000060000000300000005000000040000000100000001000000010000000300000004000000040000000400000002000000
     description: 
     docUrl: 
     showStateLabel: 0
@@ -2107,6 +2454,72 @@ MonoBehaviour:
     handleAnimatorIK: 0
   fsmTemplate: {fileID: 0}
   eventHandlerComponentsAdded: 0
+--- !u!1 &375219370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 375219373}
+  - component: {fileID: 375219372}
+  - component: {fileID: 375219371}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &375219371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375219370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &375219372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375219370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &375219373
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375219370}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2205,6 +2618,85 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &550803315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 550803316}
+  - component: {fileID: 550803318}
+  - component: {fileID: 550803317}
+  m_Layer: 5
+  m_Name: distance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &550803316
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550803315}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1019319817}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -650, y: 426.2}
+  m_SizeDelta: {x: 600, y: 80}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &550803317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550803315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8596582, g: 0.90588236, b: 0.20784314, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 70
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'distance: 000.000'
+--- !u!222 &550803318
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550803315}
+  m_CullTransparentMesh: 0
 --- !u!1 &948064692
 GameObject:
   m_ObjectHideFlags: 0
@@ -2235,6 +2727,106 @@ Transform:
   m_Father: {fileID: 305878023}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1019319813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1019319817}
+  - component: {fileID: 1019319816}
+  - component: {fileID: 1019319815}
+  - component: {fileID: 1019319814}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1019319814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019319813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1019319815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019319813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+--- !u!223 &1019319816
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019319813}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 519420031}
+  m_PlaneDistance: 10
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: -811098773
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!224 &1019319817
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019319813}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 1503729884}
+  - {fileID: 550803316}
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &1075695372
 GameObject:
   m_ObjectHideFlags: 0
@@ -2328,8 +2920,73 @@ Transform:
   m_LocalScale: {x: 100, y: 1, z: 20}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1381965495
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2319319082946141318, guid: 443681c0314e2e64bba38c202f8f927f, type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 1503729885}
+    - target: {fileID: 2319319082946141318, guid: 443681c0314e2e64bba38c202f8f927f, type: 3}
+      propertyPath: frame_par_second
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319319082946141319, guid: 443681c0314e2e64bba38c202f8f927f, type: 3}
+      propertyPath: m_Name
+      value: FPSController
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319319082946141321, guid: 443681c0314e2e64bba38c202f8f927f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319319082946141321, guid: 443681c0314e2e64bba38c202f8f927f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319319082946141321, guid: 443681c0314e2e64bba38c202f8f927f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319319082946141321, guid: 443681c0314e2e64bba38c202f8f927f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319319082946141321, guid: 443681c0314e2e64bba38c202f8f927f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319319082946141321, guid: 443681c0314e2e64bba38c202f8f927f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319319082946141321, guid: 443681c0314e2e64bba38c202f8f927f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319319082946141321, guid: 443681c0314e2e64bba38c202f8f927f, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319319082946141321, guid: 443681c0314e2e64bba38c202f8f927f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319319082946141321, guid: 443681c0314e2e64bba38c202f8f927f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2319319082946141321, guid: 443681c0314e2e64bba38c202f8f927f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 443681c0314e2e64bba38c202f8f927f, type: 3}
 --- !u!1 &1498124556
 GameObject:
   m_ObjectHideFlags: 0
@@ -2409,8 +3066,87 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &1503729883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1503729884}
+  - component: {fileID: 1503729886}
+  - component: {fileID: 1503729885}
+  m_Layer: 5
+  m_Name: FpS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1503729884
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503729883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1019319817}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -750, y: 500}
+  m_SizeDelta: {x: 400, y: 80}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1503729885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503729883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.90588236, g: 0.20784314, b: 0.20784314, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 70
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'fps: 00'
+--- !u!222 &1503729886
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503729883}
+  m_CullTransparentMesh: 0
 --- !u!1001 &1785208752
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2452,7 +3188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400264, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400264, guid: 13a16f60da4245c45a865b2136ba272c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2631,5 +3367,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

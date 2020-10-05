@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class MoveUnitychan : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class MoveUnitychan : MonoBehaviour
     private float move_speed = 0.01f;
     [SerializeField]
     private float jump_force = 10.0f;
+    [SerializeField]
+    private float ray_distance = 10.0f;
+    [SerializeField]
+    private float ray_y_offset = 0.5f;
+    [SerializeField]
+    private Text distance_text;
 
     private Quaternion LEFT = Quaternion.Euler(0, -90, 0);
     private Quaternion RIGHT = Quaternion.Euler(0, 90, 0);
@@ -43,7 +50,15 @@ public class MoveUnitychan : MonoBehaviour
 
     void Update()
     {
-        Physics.Raycast(transform.position, -transform.up, out RaycastHit info,10.0f );
+        distance_text.text = "distance: " + hit_info.distance.ToString("f3");
+    }
+
+    private void FixedUpdate()
+    {
+        Vector3 pos = transform.position;
+        pos.y += ray_y_offset;
+        Physics.Raycast(pos, -transform.up, out RaycastHit info, ray_distance);
+        Debug.DrawRay(pos, -transform.up * ray_distance, Color.red);
         hit_info = info;
     }
 
@@ -84,6 +99,20 @@ public class MoveUnitychan : MonoBehaviour
         }
     }
 
+    public void MoveFalling(float axis_val)
+    {
+        if (axis_val <= -0.5f)
+        {
+            transform.rotation = LEFT;
+            transform.position += transform.forward * move_speed;
+        }
+        if (axis_val >= 0.5f)
+        {
+            transform.rotation = RIGHT;
+            transform.position += transform.forward * move_speed;
+        }
+    }
+
     public void Jump()
     {
         _rb.AddForce(transform.up * jump_force);
@@ -94,7 +123,7 @@ public class MoveUnitychan : MonoBehaviour
     {
         if(!is_onground && hit_info.collider != null)
         {
-            if (hit_info.collider.gameObject.CompareTag("Ground") && hit_info.distance < 0.1f)
+            if (hit_info.collider.gameObject.CompareTag("Ground") && hit_info.distance < ray_y_offset)
             {
                 is_onground = true;
                 return true;
