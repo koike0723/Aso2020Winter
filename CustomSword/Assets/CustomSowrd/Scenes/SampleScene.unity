@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b24644568fbf7c4418e73a6f7d2640c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move_speed: 0.1
+  move_speed: 0.075
   jump_force: 500
   ray_distance: 20
   ray_y_offset: 0.5
@@ -1673,7 +1673,7 @@ MonoBehaviour:
         - 
         - 
         actionEnabled: 0101000001000101
-        actionIsOpen: 0000000000000000
+        actionIsOpen: 0100000000000000
         actionStartIndex: 00000000050000000b0000000e00000011000000150000001d00000024000000
         actionHashCodes: c34b4105ca51e900642ea003642ea0033fb24c03ca51e900ca51e900a4c8bf00
         unityObjectParams: []
