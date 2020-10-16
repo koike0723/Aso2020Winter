@@ -12,6 +12,15 @@ ModelImporter:
   - first:
       74: 2482489122501536868
     second: '@run'
+  - first:
+      74: 1389839219998515858
+    second: '@atack'
+  - first:
+      74: 5398478613498935471
+    second: '@atackResarve'
+  - first:
+      74: -5945118999476145978
+    second: '@atackking'
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -61,6 +70,16 @@ ModelImporter:
       animation that will be discarded.\n\t'Character1_LeftHandRing1' has translation
       animation that will be discarded.\n\t'Character1_LeftHandMiddle1' has translation
       animation that will be discarded.\n\t'Character1_LeftHandIndex1' has translation
+      animation that will be discarded.\n\nClip '@atack' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Character1_RightHandIndex1' has translation
+      animation that will be discarded.\n\t'Character1_RightHandMiddle1' has translation
+      animation that will be discarded.\n\t'Character1_RightHandRing1' has translation
+      animation that will be discarded.\n\t'Character1_RightHandPinky1' has translation
+      animation that will be discarded.\n\t'Character1_LeftHandPinky1' has translation
+      animation that will be discarded.\n\t'Character1_LeftHandRing1' has translation
+      animation that will be discarded.\n\t'Character1_LeftHandMiddle1' has translation
+      animation that will be discarded.\n\t'Character1_LeftHandIndex1' has translation
       animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
@@ -78,37 +97,8 @@ ModelImporter:
       name: '@jump'
       takeName: '@jump'
       internalID: 0
-      firstFrame: 20
-      lastFrame: 35
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 1
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
-      loopBlendPositionXZ: 1
-      keepOriginalOrientation: 1
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: '@idle'
-      takeName: '@idle'
-      internalID: 0
       firstFrame: 0
-      lastFrame: 29
+      lastFrame: 44
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -133,10 +123,39 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
+      name: '@idle'
+      takeName: '@idle'
+      internalID: 0
+      firstFrame: 10
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
       name: '@run'
       takeName: '@run'
       internalID: 0
-      firstFrame: 20
+      firstFrame: 0
       lastFrame: 43
       wrapMode: 0
       orientationOffsetY: 0
@@ -153,6 +172,93 @@ ModelImporter:
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: '@atack'
+      takeName: '@atack'
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: '@atackResarve'
+      takeName: '@atack'
+      internalID: 0
+      firstFrame: 10
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: '@atackking'
+      takeName: '@atack'
+      internalID: 0
+      firstFrame: 25
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
@@ -661,7 +767,7 @@ ModelImporter:
     - name: Character1_RightUpLeg
       parentName: Character1_Hips
       position: {x: 0.098389186, y: 0.05274403, z: -0.00020457442}
-      rotation: {x: 0.99772906, y: 0.00014604538, z: -0.06735543, w: -0.00001963245}
+      rotation: {x: 0.99772906, y: 0.00014613946, z: -0.06735558, w: -0.000019545709}
       scale: {x: 1, y: 0.9999999, z: 1}
     - name: Character1_RightLeg
       parentName: Character1_RightUpLeg
@@ -681,7 +787,7 @@ ModelImporter:
     - name: Character1_LeftUpLeg
       parentName: Character1_Hips
       position: {x: -0.09838927, y: 0.05274403, z: -0.00020466026}
-      rotation: {x: 0.000000075497894, y: -3.758859e-23, z: 1, w: -6.123234e-17}
+      rotation: {x: 0.000000075497894, y: -4.6834416e-23, z: 1, w: 6.123234e-17}
       scale: {x: 1, y: 1, z: 1}
     - name: Character1_LeftLeg
       parentName: Character1_LeftUpLeg
@@ -766,12 +872,12 @@ ModelImporter:
     - name: Character1_RightHandThumb1
       parentName: Character1_RightHand
       position: {x: 0.0052020424, y: 0.031000849, z: -0.0105795665}
-      rotation: {x: 0.26973706, y: 0.5973203, z: -0.31990606, w: 0.684186}
+      rotation: {x: 0.26973712, y: 0.5973203, z: -0.31990618, w: 0.684186}
       scale: {x: 0.9999999, y: 0.9999999, z: 1}
     - name: Character1_RightHandThumb2
       parentName: Character1_RightHandThumb1
       position: {x: -0.00000002324581, y: 0.018055473, z: 0.000000022649765}
-      rotation: {x: -0.035201624, y: -0.1270043, z: -0.02371008, w: 0.99099374}
+      rotation: {x: -0.03520119, y: -0.12700428, z: -0.023709957, w: 0.99099374}
       scale: {x: 1, y: 1, z: 1}
     - name: Character1_RightHandThumb3
       parentName: Character1_RightHandThumb2
@@ -786,7 +892,7 @@ ModelImporter:
     - name: Character1_RightHandIndex2
       parentName: Character1_RightHandIndex1
       position: {x: 0.000011949539, y: 0.014604596, z: 0.00010473445}
-      rotation: {x: -0.02338563, y: 0.8966534, z: -0.021924548, w: 0.44157112}
+      rotation: {x: -0.023385545, y: 0.8966534, z: -0.02192456, w: 0.44157115}
       scale: {x: 1, y: 1, z: 1}
     - name: Character1_RightHandIndex3
       parentName: Character1_RightHandIndex2
@@ -831,7 +937,7 @@ ModelImporter:
     - name: Character1_RightHandPinky2
       parentName: Character1_RightHandPinky1
       position: {x: -0.00013514161, y: 0.009982293, z: 0.0000619331}
-      rotation: {x: -0.03374733, y: 0.7327081, z: 0.0054650046, w: 0.67968386}
+      rotation: {x: -0.033747237, y: 0.7327081, z: 0.005464923, w: 0.6796838}
       scale: {x: 1.0000001, y: 0.9999998, z: 0.99999994}
     - name: Character1_RightHandPinky3
       parentName: Character1_RightHandPinky2
