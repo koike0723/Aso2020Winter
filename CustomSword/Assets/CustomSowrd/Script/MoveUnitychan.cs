@@ -12,6 +12,8 @@ public class MoveUnitychan : MonoBehaviour
     [SerializeField]
     private float jump_force = 10.0f;
     [SerializeField]
+    private float step_force = 3.0f;
+    [SerializeField]
     private float ray_distance = 10.0f;
     [SerializeField]
     private float ray_y_offset = 0.5f;
@@ -104,12 +106,12 @@ public class MoveUnitychan : MonoBehaviour
         if (axis_val <= -0.5f)
         {
             transform.rotation = LEFT;
-            transform.position += transform.forward * move_speed;
+            transform.position += transform.forward * move_speed * 0.75f;
         }
         if (axis_val >= 0.5f)
         {
             transform.rotation = RIGHT;
-            transform.position += transform.forward * move_speed;
+            transform.position += transform.forward * move_speed * 0.75f;
         }
     }
 
@@ -117,6 +119,17 @@ public class MoveUnitychan : MonoBehaviour
     {
         _rb.AddForce(transform.up * jump_force);
         is_onground = false;
+    }
+
+    public void Step()
+    {
+        _rb.AddForce(transform.forward * step_force, ForceMode.Impulse);
+       
+    }
+
+    public void Stop()
+    {
+        _rb.velocity = Vector3.zero;
     }
 
     public bool CharacterOnGround()
