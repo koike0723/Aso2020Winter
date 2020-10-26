@@ -4,11 +4,62 @@ ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
-      74: 7392447185744817651
-    second: short@run
+      74: -3760735200891581399
+    second: sword_short@idle
   - first:
-      74: 6778958956607388287
-    second: short@idle
+      74: 2051279264185954809
+    second: sword_short@run
+  - first:
+      74: 1525544333898092133
+    second: sword_short@jump
+  - first:
+      74: 5074594980800680548
+    second: sword_short@step
+  - first:
+      74: 7177555671651710385
+    second: sword_short@guard
+  - first:
+      74: -1368733760729200331
+    second: sword_short@atack
+  - first:
+      74: 2052739131596518554
+    second: sword_short@damage
+  - first:
+      74: 3051756838559186627
+    second: sword_short@jumpreserve
+  - first:
+      74: -2632949532640703460
+    second: sword_short@jumpair
+  - first:
+      74: 1603967658480593550
+    second: sword_short@jumplanding
+  - first:
+      74: 4761024910139078586
+    second: sword_short@stepreserve
+  - first:
+      74: 3638369945127040523
+    second: sword_short@stepfinish
+  - first:
+      74: 7432049397816853600
+    second: sword_short@atackbefore1
+  - first:
+      74: -3396020504328900082
+    second: sword_short@atack1
+  - first:
+      74: 7840876030758688256
+    second: sword_short@atackbefore2
+  - first:
+      74: 1709301640779088528
+    second: sword_short@atack2
+  - first:
+      74: -6533355072394070363
+    second: sword_short@atackbefore3
+  - first:
+      74: -2736390567616737003
+    second: sword_short@atackairbefore
+  - first:
+      74: 2949010576341307085
+    second: sword_short@atackair
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -24,8 +75,8 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'short@run' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+    animationImportWarnings: "\nClip 'sword_short@idle' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
       to improve retargeting quality.\n\t'Character1_RightHandIndex1' has translation
       animation that will be discarded.\n\t'Character1_RightHandMiddle1' has translation
       animation that will be discarded.\n\t'Character1_RightHandRing1' has translation
@@ -34,9 +85,49 @@ ModelImporter:
       animation that will be discarded.\n\t'Character1_LeftHandRing1' has translation
       animation that will be discarded.\n\t'Character1_LeftHandMiddle1' has translation
       animation that will be discarded.\n\t'Character1_LeftHandIndex1' has translation
-      animation that will be discarded.\n\nClip 'short@idle' has import animation
+      animation that will be discarded.\n\nClip 'sword_short@run' has import animation
       warnings that might lower retargeting quality:\nNote: Activate translation
       DOF on avatar to improve retargeting quality.\n\t'Character1_RightHandIndex1'
+      has translation animation that will be discarded.\n\t'Character1_RightHandMiddle1'
+      has translation animation that will be discarded.\n\t'Character1_RightHandRing1'
+      has translation animation that will be discarded.\n\t'Character1_RightHandPinky1'
+      has translation animation that will be discarded.\n\t'Character1_LeftHandPinky1'
+      has translation animation that will be discarded.\n\t'Character1_LeftHandRing1'
+      has translation animation that will be discarded.\n\t'Character1_LeftHandMiddle1'
+      has translation animation that will be discarded.\n\t'Character1_LeftHandIndex1'
+      has translation animation that will be discarded.\n\nClip 'sword_short@jump'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Character1_RightHandIndex1'
+      has translation animation that will be discarded.\n\t'Character1_RightHandMiddle1'
+      has translation animation that will be discarded.\n\t'Character1_RightHandRing1'
+      has translation animation that will be discarded.\n\t'Character1_RightHandPinky1'
+      has translation animation that will be discarded.\n\t'Character1_LeftHandPinky1'
+      has translation animation that will be discarded.\n\t'Character1_LeftHandRing1'
+      has translation animation that will be discarded.\n\t'Character1_LeftHandMiddle1'
+      has translation animation that will be discarded.\n\t'Character1_LeftHandIndex1'
+      has translation animation that will be discarded.\n\nClip 'sword_short@step'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Character1_RightHandIndex1'
+      has translation animation that will be discarded.\n\t'Character1_RightHandMiddle1'
+      has translation animation that will be discarded.\n\t'Character1_RightHandRing1'
+      has translation animation that will be discarded.\n\t'Character1_RightHandPinky1'
+      has translation animation that will be discarded.\n\t'Character1_LeftHandPinky1'
+      has translation animation that will be discarded.\n\t'Character1_LeftHandRing1'
+      has translation animation that will be discarded.\n\t'Character1_LeftHandMiddle1'
+      has translation animation that will be discarded.\n\t'Character1_LeftHandIndex1'
+      has translation animation that will be discarded.\n\nClip 'sword_short@guard'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Character1_RightHandIndex1'
+      has translation animation that will be discarded.\n\t'Character1_RightHandMiddle1'
+      has translation animation that will be discarded.\n\t'Character1_RightHandRing1'
+      has translation animation that will be discarded.\n\t'Character1_RightHandPinky1'
+      has translation animation that will be discarded.\n\t'Character1_LeftHandPinky1'
+      has translation animation that will be discarded.\n\t'Character1_LeftHandRing1'
+      has translation animation that will be discarded.\n\t'Character1_LeftHandMiddle1'
+      has translation animation that will be discarded.\n\t'Character1_LeftHandIndex1'
+      has translation animation that will be discarded.\n\nClip 'sword_short@atack'
+      has import animation warnings that might lower retargeting quality:\nNote:
+      Activate translation DOF on avatar to improve retargeting quality.\n\t'Character1_RightHandIndex1'
       has translation animation that will be discarded.\n\t'Character1_RightHandMiddle1'
       has translation animation that will be discarded.\n\t'Character1_RightHandRing1'
       has translation animation that will be discarded.\n\t'Character1_RightHandPinky1'
@@ -58,11 +149,156 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: short@run
-      takeName: short@run
+      name: sword_short@idle
+      takeName: sword_short@idle
       internalID: 0
-      firstFrame: 20
-      lastFrame: 30
+      firstFrame: 9
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: sword_short@run
+      takeName: sword_short@run
+      internalID: 0
+      firstFrame: 19
+      lastFrame: 43
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: sword_short@jump
+      takeName: sword_short@jump
+      internalID: 0
+      firstFrame: 19
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: sword_short@step
+      takeName: sword_short@step
+      internalID: 0
+      firstFrame: 14
+      lastFrame: 22
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: sword_short@guard
+      takeName: sword_short@guard
+      internalID: 0
+      firstFrame: 9
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: sword_short@atack
+      takeName: sword_short@atack
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 84
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -87,10 +323,213 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: short@idle
-      takeName: short@idle
+      name: sword_short@damage
+      takeName: sword_short@idle
+      internalID: 0
+      firstFrame: 29
+      lastFrame: 42
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: sword_short@jumpreserve
+      takeName: sword_short@jump
       internalID: 0
       firstFrame: 9
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: sword_short@jumpair
+      takeName: sword_short@jump
+      internalID: 0
+      firstFrame: 29
+      lastFrame: 34
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: sword_short@jumplanding
+      takeName: sword_short@jump
+      internalID: 0
+      firstFrame: 34
+      lastFrame: 44
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: sword_short@stepreserve
+      takeName: sword_short@step
+      internalID: 0
+      firstFrame: 9
+      lastFrame: 14
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: sword_short@stepfinish
+      takeName: sword_short@step
+      internalID: 0
+      firstFrame: 22
+      lastFrame: 27
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: sword_short@atackbefore1
+      takeName: sword_short@atack
+      internalID: 0
+      firstFrame: 9
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: sword_short@atack1
+      takeName: sword_short@atack
+      internalID: 0
+      firstFrame: 19
       lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
@@ -98,8 +537,153 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: sword_short@atackbefore2
+      takeName: sword_short@atack
+      internalID: 0
+      firstFrame: 29
+      lastFrame: 34
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: sword_short@atack2
+      takeName: sword_short@atack
+      internalID: 0
+      firstFrame: 34
+      lastFrame: 44
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: sword_short@atackbefore3
+      takeName: sword_short@atack
+      internalID: 0
+      firstFrame: 44
+      lastFrame: 49
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: sword_short@atackairbefore
+      takeName: sword_short@atack
+      internalID: 0
+      firstFrame: 64
+      lastFrame: 74
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: sword_short@atackair
+      takeName: sword_short@atack
+      internalID: 0
+      firstFrame: 74
+      lastFrame: 84
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 0
@@ -615,7 +1199,7 @@ ModelImporter:
     - name: Character1_RightUpLeg
       parentName: Character1_Hips
       position: {x: 0.098389186, y: 0.05274403, z: -0.00020457442}
-      rotation: {x: 0.99772906, y: 0.00014613946, z: -0.06735558, w: -0.000019545709}
+      rotation: {x: 0.99772906, y: 0.00014604538, z: -0.06735543, w: -0.00001963245}
       scale: {x: 1, y: 0.9999999, z: 1}
     - name: Character1_RightLeg
       parentName: Character1_RightUpLeg
@@ -632,6 +1216,11 @@ ModelImporter:
       position: {x: 0.000000002494246, y: 0.05125271, z: 0.0279188}
       rotation: {x: 0.48506752, y: 0.51449937, z: 0.48506376, w: 0.5145028}
       scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Character1_RightLeg.001
+      parentName: Character1_RightUpLeg
+      position: {x: 0.00004462385, y: 0.17799707, z: 0.00043895523}
+      rotation: {x: -0.70552814, y: 0.047521565, z: 0.04773342, w: 0.7054738}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1}
     - name: Character1_LeftUpLeg
       parentName: Character1_Hips
       position: {x: -0.09838927, y: 0.05274403, z: -0.00020466026}
@@ -652,6 +1241,11 @@ ModelImporter:
       position: {x: -0.00000034851513, y: 0.05125506, z: 0.027918657}
       rotation: {x: 0.48504266, y: 0.5145164, z: 0.4850491, w: 0.5145229}
       scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Character1_LeftLeg.001
+      parentName: Character1_LeftUpLeg
+      position: {x: -0.0000000022173987, y: 0.177997, z: -0.00044185846}
+      rotation: {x: 0.000000094156945, y: 0.7071068, z: 0.7071067, w: -0.00000009415698}
+      scale: {x: 1, y: 1, z: 1}
     - name: J_L_Skirt_00
       parentName: Character1_Hips
       position: {x: -0.08367218, y: 0.06415623, z: 0.054377574}
@@ -705,12 +1299,12 @@ ModelImporter:
     - name: Character1_RightArm
       parentName: Character1_RightShoulder
       position: {x: 0.00030060724, y: 0.046947435, z: 0.003668386}
-      rotation: {x: 0.12147706, y: 0.02541882, z: -0.007888944, w: 0.9922374}
+      rotation: {x: 0.12147705, y: 0.025418911, z: -0.007888944, w: 0.9922374}
       scale: {x: 1, y: 1, z: 1}
     - name: Character1_RightForeArm
       parentName: Character1_RightArm
       position: {x: 5.9604643e-10, y: 0.118786655, z: -0.0000005060993}
-      rotation: {x: 0.0035201535, y: 0.012927432, z: -0.034041498, w: 0.99933064}
+      rotation: {x: 0.0035203844, y: 0.01292742, z: -0.034041204, w: 0.9993306}
       scale: {x: 1, y: 1, z: 1.0000001}
     - name: Character1_RightHand
       parentName: Character1_RightForeArm
@@ -720,12 +1314,12 @@ ModelImporter:
     - name: Character1_RightHandThumb1
       parentName: Character1_RightHand
       position: {x: 0.0052020424, y: 0.031000849, z: -0.0105795665}
-      rotation: {x: 0.26973656, y: 0.59732133, z: -0.31990856, w: 0.68418413}
+      rotation: {x: 0.26973712, y: 0.5973203, z: -0.31990618, w: 0.684186}
       scale: {x: 0.9999999, y: 0.9999999, z: 1}
     - name: Character1_RightHandThumb2
       parentName: Character1_RightHandThumb1
       position: {x: -0.00000002324581, y: 0.018055473, z: 0.000000022649765}
-      rotation: {x: -0.035202026, y: -0.12700418, z: -0.02371075, w: 0.99099374}
+      rotation: {x: -0.03520119, y: -0.12700428, z: -0.023709957, w: 0.99099374}
       scale: {x: 1, y: 1, z: 1}
     - name: Character1_RightHandThumb3
       parentName: Character1_RightHandThumb2
@@ -735,12 +1329,12 @@ ModelImporter:
     - name: Character1_RightHandIndex1
       parentName: Character1_RightHand
       position: {x: 0.01164648, y: 0.053467307, z: 0.0052436395}
-      rotation: {x: 0.018036824, y: -0.029359428, z: -0.08605363, w: 0.9956945}
+      rotation: {x: 0.018039139, y: -0.029359197, z: -0.08605356, w: 0.99569446}
       scale: {x: 1, y: 1, z: 0.99999994}
     - name: Character1_RightHandIndex2
       parentName: Character1_RightHandIndex1
       position: {x: 0.000011949539, y: 0.014604596, z: 0.00010473445}
-      rotation: {x: -0.023383342, y: 0.89665365, z: -0.021919675, w: 0.4415711}
+      rotation: {x: -0.023385545, y: 0.8966534, z: -0.02192456, w: 0.44157115}
       scale: {x: 1, y: 1, z: 1}
     - name: Character1_RightHandIndex3
       parentName: Character1_RightHandIndex2
@@ -750,12 +1344,12 @@ ModelImporter:
     - name: Character1_RightHandMiddle1
       parentName: Character1_RightHand
       position: {x: 0.0042990413, y: 0.054387715, z: 0.008629534}
-      rotation: {x: -0.0019274559, y: 0.18815231, z: -0.03398275, w: 0.98155}
+      rotation: {x: -0.0019253425, y: 0.18815225, z: -0.03398243, w: 0.9815499}
       scale: {x: 0.99999994, y: 1, z: 0.9999999}
     - name: Character1_RightHandMiddle2
       parentName: Character1_RightHandMiddle1
       position: {x: -0.000019723177, y: 0.017557489, z: 0.0003214371}
-      rotation: {x: -0.014562806, y: 0.6122668, z: -0.0108437175, w: 0.7904427}
+      rotation: {x: -0.014562575, y: 0.6122668, z: -0.010845269, w: 0.7904427}
       scale: {x: 1.0000001, y: 1.0000001, z: 0.99999994}
     - name: Character1_RightHandMiddle3
       parentName: Character1_RightHandMiddle2
@@ -765,12 +1359,12 @@ ModelImporter:
     - name: Character1_RightHandRing1
       parentName: Character1_RightHand
       position: {x: -0.0054550683, y: 0.04976373, z: 0.0044023287}
-      rotation: {x: 0.029289098, y: 0.0038705426, z: 0.01896879, w: 0.99938357}
+      rotation: {x: 0.029288031, y: 0.0038707096, z: 0.018969188, w: 0.99938357}
       scale: {x: 0.99999994, y: 1, z: 0.9999999}
     - name: Character1_RightHandRing2
       parentName: Character1_RightHandRing1
       position: {x: -0.0000132915375, y: 0.013800232, z: -0.00007240892}
-      rotation: {x: -0.015427553, y: 0.74844617, z: -0.016270656, w: 0.6628165}
+      rotation: {x: -0.015427751, y: 0.74844605, z: -0.016273534, w: 0.6628165}
       scale: {x: 1, y: 1.0000001, z: 1}
     - name: Character1_RightHandRing3
       parentName: Character1_RightHandRing2
@@ -780,12 +1374,12 @@ ModelImporter:
     - name: Character1_RightHandPinky1
       parentName: Character1_RightHand
       position: {x: -0.015052111, y: 0.048673138, z: 0.0027134502}
-      rotation: {x: 0.027614443, y: -0.16528596, z: -0.0045781294, w: 0.9858484}
+      rotation: {x: 0.027615499, y: -0.16528593, z: -0.0045791073, w: 0.98584837}
       scale: {x: 0.99999994, y: 0.99999994, z: 0.9999999}
     - name: Character1_RightHandPinky2
       parentName: Character1_RightHandPinky1
       position: {x: -0.00013514161, y: 0.009982293, z: 0.0000619331}
-      rotation: {x: -0.0337455, y: 0.7327079, z: 0.0054654735, w: 0.6796841}
+      rotation: {x: -0.033747237, y: 0.7327081, z: 0.005464923, w: 0.6796838}
       scale: {x: 1.0000001, y: 0.9999998, z: 0.99999994}
     - name: Character1_RightHandPinky3
       parentName: Character1_RightHandPinky2
@@ -1052,6 +1646,16 @@ ModelImporter:
       position: {x: -2.5029293e-10, y: 0.11365342, z: 0.028235735}
       rotation: {x: 0.97653675, y: -0.000000025671817, z: -0.00000011641218, w: 0.21535099}
       scale: {x: 1, y: 0.99999994, z: 0.99999833}
+    - name: Character1_Spine2.001
+      parentName: Character1_Spine1
+      position: {x: -0, y: 0.041275628, z: -0.011033328}
+      rotation: {x: -0.7071068, y: 4.357883e-33, z: 4.357883e-33, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Character1_Spine.001
+      parentName: Character1_Spine
+      position: {x: -0, y: 0.042835318, z: 9.509722e-10}
+      rotation: {x: -0.72796947, y: -0.00000008173103, z: 0.00000008678072, w: 0.6856096}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
