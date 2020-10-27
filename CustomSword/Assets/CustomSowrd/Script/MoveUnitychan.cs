@@ -12,6 +12,8 @@ public class MoveUnitychan : MonoBehaviour
     [SerializeField]
     private float jump_force = 10.0f;
     [SerializeField]
+    private float fall_force = 10.0f;
+    [SerializeField]
     private float step_force = 3.0f;
     [SerializeField]
     private float ray_distance = 10.0f;
@@ -121,6 +123,18 @@ public class MoveUnitychan : MonoBehaviour
         is_onground = false;
     }
 
+    public void Float()
+    {
+        _rb.useGravity = false;
+        _rb.velocity = Vector3.zero;
+    }
+
+    public void Fall()
+    {
+        _rb.useGravity = true;
+        _rb.AddForce(-transform.up * fall_force);
+    }
+
     public void Step()
     {
         _rb.AddForce(transform.forward * step_force, ForceMode.Impulse);
@@ -136,7 +150,7 @@ public class MoveUnitychan : MonoBehaviour
     {
         if(!is_onground && hit_info.collider != null)
         {
-            if (hit_info.collider.gameObject.CompareTag("Ground") && hit_info.distance < ray_y_offset)
+            if (hit_info.collider.gameObject.CompareTag("Ground") && hit_info.distance <= ray_y_offset)
             {
                 is_onground = true;
                 return true;
