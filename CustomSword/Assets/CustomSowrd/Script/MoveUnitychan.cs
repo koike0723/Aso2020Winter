@@ -54,7 +54,10 @@ public class MoveUnitychan : MonoBehaviour
 
     void Update()
     {
-        distance_text.text = "distance: " + hit_info.distance.ToString("f3");
+        if(distance_text != null)
+        {
+            distance_text.text = "distance: " + hit_info.distance.ToString("f3");
+        }
     }
 
     private void FixedUpdate()
@@ -123,16 +126,15 @@ public class MoveUnitychan : MonoBehaviour
         is_onground = false;
     }
 
-    public void Float()
-    {
-        _rb.useGravity = false;
-        _rb.velocity = Vector3.zero;
-    }
 
     public void Fall()
     {
-        _rb.useGravity = true;
         _rb.AddForce(-transform.up * fall_force);
+    }
+
+    public void CorrectMoveFoward()
+    {
+        transform.position += transform.forward * move_speed * 0.05f;
     }
 
     public void Step()

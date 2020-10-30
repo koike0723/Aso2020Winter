@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1893448595, guid: a040fb66244a7f54289914d98ea4ef7d, type: 3}
+  m_Name: Idole
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"graph":{"variables":{"collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[],"valueOutputDefinitions":[],"title":null,"summary":null,"pan":{"x":-147.1031,"y":117.7338},"zoom":0.6,"elements":[{"chainable":false,"member":{"name":"SetBool","parameterTypes":["System.String","System.Boolean"],"targetType":"UnityEngine.Animator","targetTypeName":"UnityEngine.Animator","$version":"A"},"defaultValues":{"target":null,"%name":{"$content":"IsStand","$type":"System.String"},"%value":{"$content":true,"$type":"System.Boolean"}},"position":{"x":-87.0,"y":-75.0},"guid":"f5bc44e1-0fc6-4013-9741-ad688261a40c","$version":"A","$type":"Bolt.InvokeMember","$id":"9"},{"coroutine":false,"defaultValues":{},"position":{"x":-315.0,"y":-76.0},"guid":"46e018d8-28e5-4dc7-a96f-61a0f6c0a667","$version":"A","$type":"Bolt.OnEnterState","$id":"12"},{"coroutine":false,"defaultValues":{},"position":{"x":-319.0,"y":200.0},"guid":"8dae289a-b8fd-4082-81fd-cbfe2a459b7b","$version":"A","$type":"Bolt.OnExitState","$id":"14"},{"chainable":false,"member":{"name":"SetBool","parameterTypes":["System.String","System.Boolean"],"targetType":"UnityEngine.Animator","targetTypeName":"UnityEngine.Animator","$version":"A"},"defaultValues":{"target":null,"%name":{"$content":"IsStand","$type":"System.String"},"%value":{"$content":false,"$type":"System.Boolean"}},"position":{"x":-92.0,"y":201.0},"guid":"81819eb0-0e7f-4ebd-8676-8214e98ee628","$version":"A","$type":"Bolt.InvokeMember","$id":"16"},{"sourceUnit":{"$ref":"12"},"sourceKey":"trigger","destinationUnit":{"$ref":"9"},"destinationKey":"enter","guid":"1da0f568-5a30-4d6c-864e-fd72fc7a0fb8","$type":"Bolt.ControlConnection"},{"sourceUnit":{"$ref":"14"},"sourceKey":"trigger","destinationUnit":{"$ref":"16"},"destinationKey":"enter","guid":"5789f53b-aba8-4981-a067-54cd764f8fed","$type":"Bolt.ControlConnection"}],"$version":"A"}}'
+    _objectReferences: []
