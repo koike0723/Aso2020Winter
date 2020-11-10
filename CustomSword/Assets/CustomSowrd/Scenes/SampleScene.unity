@@ -477,7 +477,6 @@ MonoBehaviour:
   fall_force: 500
   step_force: 50
   ray_distance: 20
-  ray_y_offset: 0.5
   distance_text: {fileID: 550803317}
 --- !u!1 &375219370
 GameObject:
@@ -1603,8 +1602,10 @@ GameObject:
   - component: {fileID: 309934175}
   - component: {fileID: 309934178}
   - component: {fileID: 309934179}
+  - component: {fileID: 1785305119}
   - component: {fileID: 1785305115}
   - component: {fileID: 1785305113}
+  - component: {fileID: 1785305117}
   m_Layer: 0
   m_Name: SD_unitychan_humanoid
   m_TagString: Untagged
@@ -1627,7 +1628,7 @@ MonoBehaviour:
   _data:
     _json: '{"nest":{"source":"Macro","macro":0,"embed":null}}'
     _objectReferences:
-    - {fileID: 11400000, guid: 280d3711c782848478383985d271db46, type: 2}
+    - {fileID: 11400000, guid: 7627eb84f72e50d49b127b915cbba5c6, type: 2}
 --- !u!1 &1785305114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,7 +1659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"declarations":{"collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _json: '{"declarations":{"collection":{"$content":[{"name":"MoveSpeed","value":{"$content":0.15,"$type":"System.Single"},"$version":"A"},{"name":"AtackWait","value":{"$content":5.0,"$type":"System.Single"},"$version":"A"},{"name":"AnimationSpeed_Jump","value":{"$content":3.0,"$type":"System.Single"},"$version":"A"},{"name":"AnimationSpeed_Landing","value":{"$content":3.0,"$type":"System.Single"},"$version":"A"},{"name":"AnimationSpeed_AtackReserve","value":{"$content":1.0,"$type":"System.Single"},"$version":"A"},{"name":"AnimationSpeed_Atack","value":{"$content":3.0,"$type":"System.Single"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
 --- !u!1 &1785305116
 GameObject:
@@ -1677,6 +1678,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1785305117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785305112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -57143145, guid: a040fb66244a7f54289914d98ea4ef7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"nest":{"source":"Macro","macro":0,"embed":null}}'
+    _objectReferences:
+    - {fileID: 11400000, guid: 7fac1e1774bb01044aaa35d1f1ffd998, type: 2}
 --- !u!1 &1785305118
 GameObject:
   m_ObjectHideFlags: 0
@@ -1694,6 +1711,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1785305119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785305112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a743d4c1ae05514f93b6769f5440011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1785305120
 GameObject:
   m_ObjectHideFlags: 0

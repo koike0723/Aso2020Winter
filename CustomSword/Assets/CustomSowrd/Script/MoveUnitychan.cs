@@ -18,92 +18,47 @@ public class MoveUnitychan : MonoBehaviour
     [SerializeField]
     private float ray_distance = 10.0f;
     [SerializeField]
-    private float ray_y_offset = 0.5f;
-    [SerializeField]
     private Text distance_text;
+
+    private float ray_y_offset = 0.5f;
+    private float ray_x_offset = 0.2f;
 
     private Quaternion LEFT = Quaternion.Euler(0, -90, 0);
     private Quaternion RIGHT = Quaternion.Euler(0, 90, 0);
 
-    private UnitychanControls _input;
-
-    Rigidbody _rb;
-    Animator _animator;
-    RaycastHit hit_info;
+    Rigidbody _rigidBody;
+    RaycastHit hit_info_r;
+    RaycastHit hit_info_l;
 
     //地面との接触判定
     private bool is_onground = true;
 
     private void Awake()
     {
-        // アセット名と同名のクラスを生成する
-        _input = new UnitychanControls();
     }
 
     void Start()
     {
-        _animator = GetComponent<Animator>();
-        _rb = GetComponent<Rigidbody>();
-    }
-
-    private void OnEnable()
-    {
-        // 使用する前に有効化する必要がある
-        _input.Enable();
+        _rigidBody = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        if(distance_text != null)
+        if (distance_text != null)
         {
-            distance_text.text = "distance: " + hit_info.distance.ToString("f3");
+            distance_text.text = "distance: " + hit_info_r.distance.ToString("f3");
         }
     }
 
-    private void FixedUpdate()
+    public void Jump()
     {
-        Vector3 pos = transform.position;
-        pos.y += ray_y_offset;
-        Physics.Raycast(pos, -transform.up, out RaycastHit info, ray_distance);
-        Debug.DrawRay(pos, -transform.up * ray_distance, Color.red);
-        hit_info = info;
+        _rigidBody.AddForce(transform.up * jump_force);
+        is_onground = false;
     }
 
-    private void OnDisable()
+    public void Fall()
     {
-        // 使用が終わったら無効化する
-        _input.Disable();
-    }
-
-    private void OnDestroy()
-    {
-        _input.Dispose();
-    }
-
-    public void MoveLeft()
-    {
-        transform.rotation = LEFT;
-        transform.position += transform.forward * move_speed;
-    }
-
-    public void MoveRight()
-    {
-        transform.rotation = RIGHT;
-        transform.position += transform.forward * move_speed;
-    }
-
-    public void MoveFalling(bool inputleft, bool inputright)
-    {
-        if(inputleft)
-        {
-            transform.rotation = LEFT;
-            transform.position += transform.forward * move_speed;
-        }
-        if(inputright)
-        {
-            transform.rotation = RIGHT;
-            transform.position += transform.forward * move_speed;
-        }
+        _rigidBody.AddForce(-transform.up * fall_force);
     }
 
     public void MoveFalling(float axis_val)
@@ -111,54 +66,87 @@ public class MoveUnitychan : MonoBehaviour
         if (axis_val <= -0.5f)
         {
             transform.rotation = LEFT;
-            transform.position += transform.forward * move_speed * 0.75f;
+            transform.position += transform.forward * move_speed * 0.5f;
         }
         if (axis_val >= 0.5f)
         {
             transform.rotation = RIGHT;
-            transform.position += transform.forward * move_speed * 0.75f;
+            transform.position += transform.forward * move_speed * 0.5f;
         }
     }
 
-    public void Jump()
+    public void Direction(float axis_val)
     {
-        _rb.AddForce(transform.up * jump_force);
-        is_onground = false;
+        if (axis_val <= -0.5f)
+        {
+            transform.rotation = LEFT;
+        }
+        if (axis_val >= 0.5f)
+        {
+            transform.rotation = RIGHT;
+        }
     }
 
-
-    public void Fall()
+    public void MoveFoward()
     {
-        _rb.AddForce(-transform.up * fall_force);
-    }
-
-    public void CorrectMoveFoward()
-    {
-        transform.position += transform.forward * move_speed * 0.05f;
+        transform.position += transform.forward * move_speed;
     }
 
     public void Step()
     {
-        _rb.AddForce(transform.forward * step_force, ForceMode.Impulse);
+        _rigidBody.AddForce(transform.forward * step_force, ForceMode.Impulse);
        
     }
 
     public void Stop()
     {
-        _rb.velocity = Vector3.zero;
+        _rigidBody.velocity = Vector3.zero;
     }
 
-    public bool CharacterOnGround()
+    public void RayCastToGround()
     {
-        if(!is_onground && hit_info.collider != null)
+        Vector3 pos = transform.position;
+
+        pos.y += ray_y_offset;
+        pos.x += ray_x_offset;
+        Physics.Raycast(pos, -transform.up, out RaycastHit info_r, ray_distance);
+        Debug.DrawRay(pos, -transform.up * ray_distance, Color.red);
+        hit_info_r = info_r;
+
+        pos.x -= ray_x_offset*2;
+        Physics.Raycast(pos, -transform.up, out RaycastHit info_l, ray_distance);
+        Debug.DrawRay(pos, -transform.up * ray_distance, Color.red);
+        hit_info_l = info_l;
+       
+    }
+
+    public bool CharacteIsOnground()
+    {
+        return is_onground;
+    }
+
+    public bool IsOnground()
+    {
+        if (hit_info_r.collider != null && hit_info_l.collider != null)
         {
-            if (hit_info.collider.gameObject.CompareTag("Ground") && hit_info.distance <= ray_y_offset)
+            if(!is_onground)
             {
-                is_onground = true;
-                return true;
+                if (hit_info_r.collider.gameObject.CompareTag("Ground") && hit_info_r.distance <= ray_y_offset
+                 || hit_info_l.collider.gameObject.CompareTag("Ground") && hit_info_l.distance <= ray_y_offset)
+                {
+                    is_onground = true;
+                }
+            }
+            else if(is_onground)
+            {
+               if (hit_info_r.collider.gameObject.CompareTag("Ground") && hit_info_r.distance > ray_y_offset
+                && hit_info_l.collider.gameObject.CompareTag("Ground") && hit_info_l.distance > ray_y_offset)
+               {
+                    is_onground = false;
+               }
             }
         }
-        return false;
+        return is_onground;
     }
 
 }
