@@ -236,8 +236,8 @@ ModelImporter:
       name: sword_long@step
       takeName: sword_long@step
       internalID: 0
-      firstFrame: 14
-      lastFrame: 22
+      firstFrame: 9
+      lastFrame: 17
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

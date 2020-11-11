@@ -473,9 +473,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move_speed: 0.15
-  jump_force: 500
-  fall_force: 500
-  step_force: 50
+  jump_force: 10
+  fall_force: 10
+  step_force: 30
+  decelerate_val: 1
   ray_distance: 20
   distance_text: {fileID: 550803317}
 --- !u!1 &375219370
@@ -1659,7 +1660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"declarations":{"collection":{"$content":[{"name":"MoveSpeed","value":{"$content":0.15,"$type":"System.Single"},"$version":"A"},{"name":"AtackWait","value":{"$content":5.0,"$type":"System.Single"},"$version":"A"},{"name":"AnimationSpeed_Jump","value":{"$content":3.0,"$type":"System.Single"},"$version":"A"},{"name":"AnimationSpeed_Landing","value":{"$content":3.0,"$type":"System.Single"},"$version":"A"},{"name":"AnimationSpeed_AtackReserve","value":{"$content":1.0,"$type":"System.Single"},"$version":"A"},{"name":"AnimationSpeed_Atack","value":{"$content":3.0,"$type":"System.Single"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _json: '{"declarations":{"collection":{"$content":[{"name":"JumpButton","value":{"$content":"button_x","$type":"System.String"},"$version":"A"},{"name":"GuradButtn","value":{"$content":"button_y","$type":"System.String"},"$version":"A"},{"name":"AtackButton","value":{"$content":"button_a","$type":"System.String"},"$version":"A"},{"name":"StepButton","value":{"$content":"button_b","$type":"System.String"},"$version":"A"},{"name":"MoveSpeed","value":{"$content":0.15,"$type":"System.Single"},"$version":"A"},{"name":"AtackWait","value":{"$content":5.0,"$type":"System.Single"},"$version":"A"},{"name":"AnimationSpeed_Jump","value":{"$content":3.0,"$type":"System.Single"},"$version":"A"},{"name":"AnimationSpeed_Landing","value":{"$content":3.0,"$type":"System.Single"},"$version":"A"},{"name":"AnimationSpeed_AtackReserve","value":{"$content":1.0,"$type":"System.Single"},"$version":"A"},{"name":"AnimationSpeed_Atack","value":{"$content":3.0,"$type":"System.Single"},"$version":"A"},{"name":"AnimationSpeed_Step","value":{"$content":1.0,"$type":"System.Single"},"$version":"A"},{"name":"AnimationSpeed_StepFinish","value":{"$content":1.0,"$type":"System.Single"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
     _objectReferences: []
 --- !u!1 &1785305116
 GameObject:

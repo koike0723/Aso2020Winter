@@ -16,6 +16,8 @@ public class MoveUnitychan : MonoBehaviour
     [SerializeField]
     private float step_force = 3.0f;
     [SerializeField]
+    private float decelerate_val = 0.5f;
+    [SerializeField]
     private float ray_distance = 10.0f;
     [SerializeField]
     private Text distance_text;
@@ -32,6 +34,7 @@ public class MoveUnitychan : MonoBehaviour
 
     //地面との接触判定
     private bool is_onground = true;
+    private bool is_step = false;
 
     private void Awake()
     {
@@ -52,13 +55,13 @@ public class MoveUnitychan : MonoBehaviour
 
     public void Jump()
     {
-        _rigidBody.AddForce(transform.up * jump_force);
+        _rigidBody.AddForce(transform.up * jump_force, ForceMode.VelocityChange);
         is_onground = false;
     }
 
     public void Fall()
     {
-        _rigidBody.AddForce(-transform.up * fall_force);
+        _rigidBody.AddForce(-transform.up * fall_force, ForceMode.VelocityChange);
     }
 
     public void MoveFalling(float axis_val)
@@ -94,13 +97,26 @@ public class MoveUnitychan : MonoBehaviour
 
     public void Step()
     {
-        _rigidBody.AddForce(transform.forward * step_force, ForceMode.Impulse);
-       
+        _rigidBody.AddForce(transform.forward * step_force, ForceMode.VelocityChange);
+        is_step = true;
+        //_rigidBody.AddForce(transform.forward * step_force);
+
+    }
+
+    public bool GetIsStep()
+    {
+        return is_step;
+    }
+
+    public void Decelerate()
+    {
+        _rigidBody.velocity -= transform.forward * decelerate_val;
     }
 
     public void Stop()
     {
         _rigidBody.velocity = Vector3.zero;
+        is_step = false;
     }
 
     public void RayCastToGround()
@@ -120,7 +136,7 @@ public class MoveUnitychan : MonoBehaviour
        
     }
 
-    public bool CharacteIsOnground()
+    public bool GetIsOnground()
     {
         return is_onground;
     }
