@@ -28,4 +28,17 @@ public class Calculation : MonoBehaviour
         }
         return false;
    }
+
+   public float FloatMagnitude(float val)
+   {
+        if( val > 0)
+        {
+            return val;
+        }
+        if( val < 0)
+        {
+            return -val;
+        }
+        return 0;
+   }
 }

@@ -41,13 +41,13 @@ ModelImporter:
     second: sword_middle@stepfinish
   - first:
       74: -6501528174507399618
-    second: sword_middle@atackbefore1
+    second: sword_middle@atackreserve1
   - first:
       74: -2990980411729126976
     second: sword_middle@atack1
   - first:
       74: -449678592999793876
-    second: sword_middle@atackbefore2
+    second: sword_middle@atackreserve2
   - first:
       74: 7685807167380863293
     second: sword_middle@atack2
@@ -213,7 +213,7 @@ ModelImporter:
       name: sword_middle@jump
       takeName: sword_middle@jump
       internalID: 0
-      firstFrame: 19
+      firstFrame: 9
       lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
@@ -242,7 +242,7 @@ ModelImporter:
       name: sword_middle@step
       takeName: sword_middle@step
       internalID: 0
-      firstFrame: 14
+      firstFrame: 9
       lastFrame: 22
       wrapMode: 0
       orientationOffsetY: 0
@@ -500,7 +500,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: sword_middle@atackbefore1
+      name: sword_middle@atackreserve1
       takeName: sword_middle@atack
       internalID: 0
       firstFrame: 9
@@ -558,7 +558,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: sword_middle@atackbefore2
+      name: sword_middle@atackreserve2
       takeName: sword_middle@atack
       internalID: 0
       firstFrame: 27
