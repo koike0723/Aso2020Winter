@@ -97,10 +97,11 @@ public class MoveUnitychan : MonoBehaviour
 
     public void Step()
     {
-        _rigidBody.AddForce(transform.forward * step_force, ForceMode.VelocityChange);
-        is_step = true;
-        //_rigidBody.AddForce(transform.forward * step_force);
-
+        if(!is_step)
+        {
+            _rigidBody.AddForce(transform.forward * step_force, ForceMode.VelocityChange);
+            is_step = true;
+        }
     }
 
     public bool GetIsStep()
