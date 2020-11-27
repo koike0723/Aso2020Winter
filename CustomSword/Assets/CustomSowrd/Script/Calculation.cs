@@ -16,13 +16,13 @@ public class Calculation : MonoBehaviour
         
     }
 
-   public bool AxisValueMargin(float axis_val, float margin_val)
+   public bool MagniturdeGreaterOrEqual(float a, float b)
    {
-        if(axis_val >= margin_val)
+        if(a >= b)
         {
             return true;
         }
-        if(axis_val <= -margin_val)
+        if(a <= -b)
         {
             return true;
         }
