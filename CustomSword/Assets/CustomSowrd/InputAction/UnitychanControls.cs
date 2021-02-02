@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Resouce/Sample/UnitychanControls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/CustomSowrd/InputAction/UnitychanControls.inputactions'
 
 using System;
 using System.Collections;

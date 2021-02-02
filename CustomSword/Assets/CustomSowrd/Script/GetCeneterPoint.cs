@@ -27,13 +27,15 @@ public class GetCeneterPoint : MonoBehaviour
         pos = new Vector3(0, 0, 0);
         radius = 0.0f;
         foreach (Transform trans in transList)
-        {     //オブジェクトのポジションの平均値を算出
+        {     
+			//オブジェクトのポジションの平均値を算出
             pos += trans.position;
         }
         center = pos / transList.Count;
         this.transform.position = center;           //CenterPointのポジションを中心に配置
         foreach (Transform trans in transList)
-        {     //中心から最も遠いオブジェクトとの距離を算出
+        {     
+			//中心から最も遠いオブジェクトとの距離を算出
             radius = Mathf.Max(radius, Vector3.Distance(center, trans.position));
         }
         distance = (radius + margin) / Mathf.Sin(usingCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);   //カメラの距離を算出

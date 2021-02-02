@@ -46,6 +46,10 @@ public class MoveUnitychan : MonoBehaviour
     private bool is_onground = true;
     //ステップ中判定
     private bool is_step = false;
+	//ヒット判定
+	private bool is_hit = false;
+	//ダメージ判定
+	private bool is_dmg = false;
 
     private void Awake()
     {
@@ -137,9 +141,9 @@ public class MoveUnitychan : MonoBehaviour
     }
 
     //移動攻撃用ステップ
-    public void StepOn(Vector3 vec)
+    public void StepOn(float force)
     {
-        _rigidBody.AddForce(vec, ForceMode.VelocityChange);
+        _rigidBody.AddForce(transform.forward * force, ForceMode.VelocityChange);
     }
 
     //ステップ判定取得
@@ -209,6 +213,28 @@ public class MoveUnitychan : MonoBehaviour
         }
         return is_onground;
     }
+
+	public bool HitAtack()
+	{
+		bool hit = false;
+		if(is_hit && !is_dmg)
+		{
+			hit = true;
+			is_dmg = true;
+		}
+
+		return hit;
+	}
+
+	public void OnTriggerEnter(Collider other)
+	{
+		GameObject _hitBox = transform.Find("HitBox").gameObject;
+		if( _hitBox.tag == "HitBox2P" && other.tag == "SwordHitBox1P" 
+		 || _hitBox.tag == "HitBox1P" && other.tag == "SwordHitBox2P")
+		{
+			is_hit = true;
+		}
+	}
 
 }
 

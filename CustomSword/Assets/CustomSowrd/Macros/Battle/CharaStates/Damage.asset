@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1893448595, guid: a040fb66244a7f54289914d98ea4ef7d, type: 3}
+  m_Name: Damage
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"graph":{"variables":{"collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[],"valueOutputDefinitions":[],"title":null,"summary":null,"pan":{"x":0.0,"y":0.0},"zoom":0.8,"elements":[{"coroutine":false,"defaultValues":{},"position":{"x":-141.0,"y":-21.0},"guid":"16a7114d-fed1-4cca-b5e9-0f87e822fec4","$version":"A","$type":"Bolt.OnEnterState","$id":"9"},{"kind":"Object","defaultValues":{"name":{"$content":"Dmg_flg","$type":"System.String"},"object":null},"position":{"x":92.0,"y":-24.0},"guid":"5d14137e-7598-4ecc-9c23-3e47ac5376ab","$version":"A","$type":"Bolt.SetVariable","$id":"11"},{"type":"System.Boolean","value":{"$content":true,"$type":"System.Boolean"},"defaultValues":{},"position":{"x":-60.0,"y":78.0},"guid":"aebf3e68-dd77-4d6e-a572-63dccf45fc53","$version":"A","$type":"Bolt.Literal","$id":"13"},{"sourceUnit":{"$ref":"9"},"sourceKey":"trigger","destinationUnit":{"$ref":"11"},"destinationKey":"assign","guid":"dda631b2-2ec1-4d13-aa1a-7f380690c543","$type":"Bolt.ControlConnection"},{"sourceUnit":{"$ref":"13"},"sourceKey":"output","destinationUnit":{"$ref":"11"},"destinationKey":"input","guid":"54636ea9-73c6-4db3-934d-688b146a474e","$type":"Bolt.ValueConnection"}],"$version":"A"}}'
+    _objectReferences: []
